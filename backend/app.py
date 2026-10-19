@@ -30,6 +30,7 @@ state = {
     "raw": [],
     "text": "",
     "event_time": None,
+    "event_time_iso": None,
     "count": 0,
     "status": "connecting",
 }
@@ -59,13 +60,16 @@ def on_event(partition_context, event):
         count = state["count"] + 1
 
     event_time = None
+    event_time_iso = None
     if event.enqueued_time is not None:
         event_time = event.enqueued_time.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        event_time_iso = event.enqueued_time.astimezone(timezone.utc).isoformat()
 
     publish({
         "raw": list(raw),
         "text": raw.decode("utf-8", errors="replace"),
         "event_time": event_time,
+        "event_time_iso": event_time_iso,
         "count": count,
         "status": "live",
     })
