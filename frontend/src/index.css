@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Consolas, "Courier New", monospace;
+  background: #0f172a;
+  color: #e2e8f0;
+}
