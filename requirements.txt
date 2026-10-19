@@ -1,3 +1,0 @@
-flask
-azure-eventhub
-python-dotenv
